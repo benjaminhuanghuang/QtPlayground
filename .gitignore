@@ -1,4 +1,5 @@
 *.obj
+*.o
 
 # OS X system file
 .DS_Store
@@ -6,3 +7,5 @@
 # Intellij IDE project settings
 .idea
 
+Makefile
+.qmake.stash
