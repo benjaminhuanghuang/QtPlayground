@@ -1,5 +1,6 @@
 *.obj
 *.o
+*.exe
 
 # OS X system file
 .DS_Store
