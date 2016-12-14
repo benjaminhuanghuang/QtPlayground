@@ -8,5 +8,7 @@
 # Intellij IDE project settings
 .idea
 
+.vscode
+
 Makefile
 .qmake.stash
