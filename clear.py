@@ -8,9 +8,8 @@ def del_file(path):
         sub_path = os.path.join(path, entity)
         if os.path.isdir(sub_path) and not entity.startswith("."):
             del_file(sub_path)
-        elif os.path.isfile(sub_path):
-            if is_file_math(entity, file_list):
-                print "Delete " + os.path.join(sub_path)
+        elif os.path.isfile(sub_path) and is_file_math(entity, file_list):
+            print "Delete " + os.path.join(sub_path)
 
 def is_file_math(file_name, file_list):
     for name in file_list:
