@@ -1,6 +1,6 @@
 import os
 
-file_list = [".exe", ".o", ".obj", "Makefile"]
+file_list = [".exe", ".o", ".obj"]
 
 def del_file(path):
     entities = os.listdir(path)
@@ -8,10 +8,10 @@ def del_file(path):
         sub_path = os.path.join(path, entity)
         if os.path.isdir(sub_path) and not entity.startswith("."):
             del_file(sub_path)
-        elif os.path.isfile(sub_path) and is_file_math(entity, file_list):
+        elif os.path.isfile(sub_path) and is_file_match(entity, file_list):
             print "Delete " + os.path.join(sub_path)
 
-def is_file_math(file_name, file_list):
+def is_file_match(file_name, file_list):
     for name in file_list:
         if name.startswith(".") and file_name.endswith(name):
             return True
