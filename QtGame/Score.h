@@ -12,7 +12,7 @@ private:
 public:
   Score(QGraphicsItem *parent = 0);
   void increase();
-  void getScore();
+  int getScore();
 };
 
 #endif // SCORE_H

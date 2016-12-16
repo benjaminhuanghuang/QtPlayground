@@ -1,12 +1,17 @@
 #include <QTimer>
 #include <QGraphicsTextItem>
 #include <QFont>
+#include <QMediaPlayer>
 
 #include "Bullet.h"
 #include "Game.h"
 #include "Score.h"
+#include "Enemy.h"
 
-void Game::Game(QWidget *parent)
+
+
+
+Game::Game(QWidget *parent)
 {
     // Create scene
     scene = new QGraphicsScene();
@@ -20,9 +25,8 @@ void Game::Game(QWidget *parent)
 
     // create player
     player = new Player();
-    player->setRect(0, 0, 100,100);
-    pylayer->setPos(400,500);
-    player->setFlag(QGrapyicsItem::ItemIsFocusable);
+    player->setPos(400,500);
+    player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
     scene->addItem(player);
 
@@ -38,6 +42,10 @@ void Game::Game(QWidget *parent)
     QTimer *timer = new QTimer();
     connect(timer, SIGNAL(timeout()), player, SLOT(spawn()));
     timer->start(2000);
+
+    // Play background music, need module "multimedia"
+    QMediaPlayer *music = new QMediaPlayer();
+    music->setMedia(QUrl("qrc://sounds/sounds/bgsound.mp3"));
 
     show();
 }

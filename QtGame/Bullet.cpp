@@ -7,9 +7,10 @@
 
 extern Game *game;
 
-void Bullet::Bullet()
+Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
-    setRect(0, 0, 10, 50);
+    // draw graphics
+    setPixmap(QPixmap(":/images/bullet.png"));
 
     QTimer *timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
@@ -19,24 +20,24 @@ void Bullet::Bullet()
 void Bullet::move()
 {
     // if bullet collides with enemy,m destory both
-    QList<QGraphicsItem> colliding_items = collidingItem();
+    QList<QGraphicsItem*> colliding_items = collidingItems();
     for(int i =0 , n = colliding_items.size(); i<n; ++i)
     {
         if(typeid(*(colliding_items[i])) == typeid(Enemy))
         {
             game->score->increase();
             
-            scene()->remvoeItem(colliding_item[i]);
-            delete colliding_item[i];
+            scene()->removeItem(colliding_items[i]);
+            delete colliding_items[i];
             
-            scene()->remvoeItem(this);
+            scene()->removeItem(this);
             delete this;
             return;
         }
     }
 
     setPos(x(), y() - 10);
-    if(pos().y + rect().height()<0)
+    if(pos().y() < 0)
     {
         scene()->removeItem(this);
         delete this;

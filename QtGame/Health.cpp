@@ -1,14 +1,14 @@
 #include <QFont>
-#include "Score.h"
+#include "Health.h"
 
-void Health::Health(QGraphicsItem *parent) : QGraphicsItem(parent)
+Health::Health(QGraphicsItem *parent) : QGraphicsTextItem(parent)
 {
-    health = 0;
+    health = 3;
 
     //Darw the text
     setPlainText(QString("Health: ") + QString::number(health));
     setDefaultTextColor(Qt::red);
-    setFont(QFont("times"), 16); //Font name, size
+    setFont(QFont("times", 16)); //Font name, size
 }
 void Health::decrease()
 {
@@ -17,7 +17,7 @@ void Health::decrease()
     setPlainText(QString("Health: ") + QString::number(health));
 }
 
-void Health::getHealth()
+int Health::getHealth()
 {
     return health;
 }

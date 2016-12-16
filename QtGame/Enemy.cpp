@@ -8,7 +8,7 @@
 
 extern Game *game;
 
-void Enemy::Enemy() : QObject(), QGraphicsRectItem()
+Enemy::Enemy() : QObject(), QGraphicsRectItem()
 {
     int random_number = rand() % 700;
     setPos(random_number, 0);

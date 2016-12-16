@@ -1,3 +1,6 @@
 <RCC>
-    <qresource prefix="/sounds"/>
+    <qresource prefix="/sounds">
+        <file>sounds/bgsound.mp3</file>
+        <file>sounds/shoot.mp3</file>
+    </qresource>
 </RCC>
