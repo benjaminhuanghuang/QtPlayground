@@ -1,6 +1,11 @@
 #include <QTimer>
+#include <QGraphicsScene>
+#include <QList>
 #include "Bullet.h"
 #include "Enemy.h"
+#include "Game.h"
+
+extern Game *game;
 
 void Bullet::Bullet()
 {
@@ -19,6 +24,8 @@ void Bullet::move()
     {
         if(typeid(*(colliding_items[i])) == typeid(Enemy))
         {
+            game->score->increase();
+            
             scene()->remvoeItem(colliding_item[i]);
             delete colliding_item[i];
             

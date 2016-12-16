@@ -6,6 +6,7 @@
 
 #include "Game.h"
 
+// Global object
 Game *game;
 
 int main(int argc, char* argv[])

@@ -4,6 +4,7 @@
 
 #include "Bullet.h"
 #include "Game.h"
+#include "Score.h"
 
 void Game::Game(QWidget *parent)
 {
@@ -24,6 +25,14 @@ void Game::Game(QWidget *parent)
     player->setFlag(QGrapyicsItem::ItemIsFocusable);
     player->setFocus();
     scene->addItem(player);
+
+    // Create score
+    score = new Score();
+    scene->addItem(score);
+
+    health = new Health();
+    health->setPos(health->x(), health->y()+25);
+    scene->addItem(health);
 
     // Spawn enemies
     QTimer *timer = new QTimer();

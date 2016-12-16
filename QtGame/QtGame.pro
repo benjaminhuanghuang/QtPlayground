@@ -13,9 +13,22 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    MyRect.cpp
+    MyRect.cpp \
+    Bullet.cpp \
+    Enemy.cpp \
+    Game.cpp \
+    Health.cpp \
+    Score.cpp
 
 HEADERS  += \
-    MyRect.h
+    MyRect.h \
+    Bullet.h \
+    Enemy.h \
+    Game.h \
+    Health.h \
+    Score.h
 
 FORMS    +=
+
+RESOURCES += \
+    res.qrc
