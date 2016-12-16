@@ -5,6 +5,7 @@
 int main(int argc, char *argv[]) 
 { 
     QApplication a(argc, argv); 
+    // The QWidget class is the base class of all user interface objects
     QWidget mainWin;
     mainWin.setMininumsSize(200, 100);
     mainWin.setMaxinumsSize(200, 100);
