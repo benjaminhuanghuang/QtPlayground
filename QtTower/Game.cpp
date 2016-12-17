@@ -14,6 +14,7 @@ Game::Game(QWidget *parent)
 
     //
     Tower *t = new Tower();
+    t->setPos(250,250);
     scene->addItem(t);
 
     setFixedSize(800, 600);
