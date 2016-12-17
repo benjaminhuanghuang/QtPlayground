@@ -3,6 +3,7 @@
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
+#include <QMouseEvent>
 
 
 class Game : public QGraphicsView
@@ -11,6 +12,7 @@ class Game : public QGraphicsView
     Game(QWidget *parent=0);
     QGraphicsScene * scene;
 
+    void mousePressEvent(QMouseEvent *event);
 };
 
 #endif // GAME_H
