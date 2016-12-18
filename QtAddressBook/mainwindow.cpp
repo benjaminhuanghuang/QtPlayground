@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QPushButton>
+
 MainWindow::MainWindow(AddressBookController *controller, QWidget *parent) :
             QMainWindow(parent),ui(new Ui::MainWindow),m_controller(controller)
 {
@@ -42,8 +44,72 @@ void MainWindow::deleteEntry()
     }
 }
 
+void MainWindow::editEntry()
+{
+    auto listItem = ui->listWidget->currentItem();
+    if(listItem){
+        auto entry = m_entryMap.value(listItem);
+        if(entry)
+        {
+            ui->stackedWidget->setCurrentWidget(ui->detailPage);
+            ui->menuEntries->setEnabled("false");
+
+            ui->nameEdit->setText(entry->name());
+            ui->birthdayEdit->setDate(entry->birthday());
+            ui->addressEdit->setPlainText(entry->address());
+            ui->phonenubmerEdit->setPlainText(entry->phoneNumbers().join("\n"));
+
+        }
+    }
+}
+
+void MainWindow::saveEntry()
+{
+    auto listItem = ui->listWidget->currentItem();
+    if(listItem){
+        auto entry = m_entryMap.value(listItem);
+        if(entry)
+        {
+            entry->setName(ui->nameEdit->text());
+            entry->setBirthday(ui->birthdayEdit->date());
+            entry->setAddress(ui->addressEdit->toPlainText());
+            entry->setPhoneNumbers(ui->phonenubmerEdit->toPlainText().split("\n"));
+
+            listItem->setText(entry->name());
+            ui->stackedWidget->setCurrentWidget(ui->listPage);
+            ui->menuEntries->setEnabled("true");
+        }
+    }
+}
+
+void MainWindow::discardEntry()
+{
+    ui->stackedWidget->setCurrentWidget(ui->listPage);
+    ui->menuEntries->setEnabled("true");
+}
+
+void MainWindow::resetEntry()
+{
+    auto listItem = ui->listWidget->currentItem();
+    if(listItem){
+        auto entry = m_entryMap.value(listItem);
+        if(entry)
+        {
+            ui->nameEdit->setText(entry->name());
+            ui->birthdayEdit->setDate(entry->birthday());
+            ui->addressEdit->setPlainText(entry->address());
+            ui->phonenubmerEdit->setPlainText(entry->phoneNumbers().join("\n"));
+        }
+    }
+}
+
 void MainWindow::setupConnections()
 {
     connect(ui->actionAdd, SIGNAL(triggered(bool)), this, SLOT(createEntry()));
     connect(ui->actionRemove, &QAction::triggered, this, &MainWindow::deleteEntry);
+    connect(ui->actionEdit, &QAction::triggered, this, &MainWindow::editEntry);
+
+    connect(ui->buttonBox->button(QDialogButtonBox::Save), &QPushButton::clicked, this, &MainWindow::saveEntry);
+    connect(ui->buttonBox->button(QDialogButtonBox::Discard), &QPushButton::clicked, this, &MainWindow::discardEntry);
+    connect(ui->buttonBox->button(QDialogButtonBox::Reset), &QPushButton::clicked, this, &MainWindow::resetEntry);
 }
