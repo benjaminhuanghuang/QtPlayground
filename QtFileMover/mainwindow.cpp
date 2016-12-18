@@ -34,10 +34,12 @@ void MainWindow::justify()
 
 void MainWindow::createActions()
 {
+    //Action about
     aboutAct = new QAction(tr("&About"), this);
     aboutAct->setStatusTip(tr("Show the application's About box"));
     connect(aboutAct, &QAction::triggered, this, &MainWindow::about);
 
+    //Action justify
     justifyAct = new QAction(tr("&Justify"), this);
     justifyAct->setCheckable(true);
     justifyAct->setShortcut(tr("Ctrl+J"));
@@ -47,6 +49,7 @@ void MainWindow::createActions()
 
 void MainWindow::createMenus()
 {
+    //"Help" main menu
     helpMenu = menuBar()->addMenu(tr("&Help"));
     helpMenu->addAction(aboutAct);
     helpMenu->addSeparator()->setText(tr("Alignment"));
