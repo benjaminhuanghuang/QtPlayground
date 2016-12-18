@@ -13,7 +13,7 @@ AddressBook::Entries AddressBook::entries() const
 AddressBookEntry *AddressBook::createEntry()
 {
     auto result = new AddressBookEntry(this);
-    if(!result)
+    if(result)
     {
         m_entries.append(result);
         emit entryAdded(result);

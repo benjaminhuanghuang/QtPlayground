@@ -16,11 +16,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
     addressbookentry.cpp \
     mainwindow.cpp \
-    addressbook.cpp
+    addressbook.cpp \
+    addressbookcontroller.cpp
 
 HEADERS  += \
     addressbookentry.h \
     mainwindow.h \
-    addressbook.h
+    addressbook.h \
+    addressbookcontroller.h
 
 FORMS    += mainwindow.ui
