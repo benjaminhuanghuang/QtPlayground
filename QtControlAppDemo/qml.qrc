@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>introducing.qml</file>
+        <file>button.qml</file>
+        <file>toolbar.qml</file>
+        <file>tableview.qml</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>icons/save.ico</file>
+        <file>icons/print.ico</file>
+        <file>icons/open.ico</file>
+    </qresource>
+</RCC>
