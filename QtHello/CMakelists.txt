@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.7)
+
+set(Qt5_DIR "/Users/bhuang/Qt/5.12.2/clang_64/lib/cmake/Qt5")
+
+project(QtHello)
+
+find_package(Qt5 COMPONENTS Quick Core REQUIRED)
+
+#qt5_add_resources(RESOURCES qml.qrc)
+
+add_executable(${PROJECT_NAME} "main.cpp")
+
+qt5_use_modules(${PROJECT_NAME} Widgets Core)
+
+target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Widgets)
