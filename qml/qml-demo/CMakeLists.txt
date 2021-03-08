@@ -17,6 +17,7 @@ find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 add_executable(${CMAKE_PROJECT_NAME}
   main.cpp
   qml.qrc
+  icon.qrc
 )
 
 target_link_libraries(${CMAKE_PROJECT_NAME}

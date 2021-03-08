@@ -15,4 +15,10 @@ Page {
         text: qsTr("You are on Page 1.")
         anchors.centerIn: parent
     }
+ 
+    Button {
+        id: bton1
+        text: "Test"
+        icon.source: "qrc:/icons/favicon.ico"
+    }
 }
